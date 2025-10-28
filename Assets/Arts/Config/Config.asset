@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6470b1acb3b482c830d432f3c9fc74, type: 3}
+  m_Name: Config
+  m_EditorClassIdentifier: 
+  _textColorDefines:
+  - key_string: Black
+    color: {r: 0, g: 0, b: 0, a: 1}
+  - key_string: Brown
+    color: {r: 0.32156864, g: 0.22352941, b: 0.14509805, a: 1}
+  - key_string: Desc
+    color: {r: 0.5019608, g: 0.43137255, b: 0.38431373, a: 1}
+  - key_string: White
+    color: {r: 1, g: 0.9882353, b: 0.9607843, a: 1}
+  - key_string: DarkBlue
+    color: {r: 0.105882354, g: 0.34901962, b: 0.5568628, a: 1}
+  - key_string: Red
+    color: {r: 0.8584906, g: 0.2647946, b: 0.22272164, a: 1}
+  - key_string: BlueGreen
+    color: {r: 0, g: 0.4528302, b: 0.35555553, a: 1}
+  - key_string: Yellow
+    color: {r: 1, g: 0.9153609, b: 0, a: 1}
+  _eventTextColorDefines: []
+  RopeUpgradeMat:
+  - {fileID: 2100000, guid: ee34a277136ff4b0a878728c143c3f5d, type: 2}
+  - {fileID: 2100000, guid: d33920812a99a419b8de6052bef0509e, type: 2}
+  - {fileID: 2100000, guid: 9a2ca9c6772794c09b9bb81f33a81a6b, type: 2}
+  - {fileID: 2100000, guid: f4cb62bc044e64f53a1994b39b34a29d, type: 2}
+  - {fileID: 2100000, guid: 2473524cdbebb4ab18347277855176ff, type: 2}
+  - {fileID: 2100000, guid: a3769b084330748ba89015b10809bce2, type: 2}
+  - {fileID: 2100000, guid: 273eb01fe82054534b1aa48b2d733696, type: 2}
+  - {fileID: 2100000, guid: f48ad26d3411945a397ecd59bdcc6c42, type: 2}
+  _imageColorDefines:
+  - key_string: Bg_Yellow
+    color: {r: 1, g: 0.84705883, b: 0.39215687, a: 1}
+  - key_string: Line_BasicBrowm
+    color: {r: 0.43529412, g: 0.30980393, b: 0.21960784, a: 1}
+  - key_string: Bg_Blue
+    color: {r: 0.36078432, g: 0.57254905, b: 0.8156863, a: 1}
+  - key_string: Line_Blue
+    color: {r: 0.21693665, g: 0.40526336, b: 0.6132076, a: 1}
+  - key_string: Bg_BlueGreen
+    color: {r: 0.10980392, g: 0.67058825, b: 0.5529412, a: 1}
+  - key_string: Line_BlueGreen
+    color: {r: 0, g: 0.5294118, b: 0.41568628, a: 1}
+  - key_string: Bg_Pink
+    color: {r: 0.9137255, g: 0.4117647, b: 0.5058824, a: 1}
+  - key_string: Line_Pink
+    color: {r: 0.72156864, g: 0.2627451, b: 0.36078432, a: 1}
+  - key_string: Btn_Green
+    color: {r: 0.42352942, g: 0.7647059, b: 0.22745098, a: 1}
+  - key_string: Btn_Orange
+    color: {r: 1, g: 0.64705884, b: 0.09019608, a: 1}
+  - key_string: Btn_Blue
+    color: {r: 0.2007832, g: 0.58494633, b: 0.9056604, a: 1}
+  - key_string: Bg_Gray
+    color: {r: 0.52156866, g: 0.52156866, b: 0.52156866, a: 1}
+  - key_string: Upgrade_Orange
+    color: {r: 0.85882354, g: 0.38039216, b: 0.14117648, a: 1}
+  - key_string: Upgrade_Green
+    color: {r: 0.3372549, g: 1, b: 0, a: 1}
+  - key_string: Upgrade_Blue
+    color: {r: 0, g: 0.5254902, b: 0.7372549, a: 1}
+  - key_string: Stage_Color_01
+    color: {r: 0, g: 0.5254902, b: 0.7372549, a: 1}
+  - key_string: Stage_Color_02
+    color: {r: 0.99215686, g: 1, b: 0.22352941, a: 1}
+  - key_string: Stage_Color_03
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - key_string: Stage_Color_04
+    color: {r: 0.9245283, g: 0.9137255, b: 0.15263437, a: 1}
+  - key_string: Stage_Color_05
+    color: {r: 0.9254902, g: 0.15294118, b: 0.40514007, a: 1}
+  - key_string: Stage_Color_06
+    color: {r: 0.60784316, g: 0.9254902, b: 0.15294118, a: 1}
+  - key_string: Stage_Color_07
+    color: {r: 0.7084545, g: 0.8867924, b: 0.28025985, a: 1}
+  - key_string: Stage_Color_08
+    color: {r: 0.5254902, g: 0.83137256, b: 1, a: 1}
+  - key_string: Stage_Color_09
+    color: {r: 0.40784314, g: 0.5019608, b: 0.5568628, a: 1}
+  - key_string: Stage_Color_10
+    color: {r: 0.056069765, g: 0.7924528, b: 0.26666668, a: 1}
+  _eventImgaeColorDefines: []
+  SkeletonGraphicMat: {fileID: 0}
+  DisableSpriteMat: {fileID: 0}
+  EnableSpriteMat: {fileID: 0}
+  ImgAddtiveMat: {fileID: 0}
+  TextMaterialList:
+  - {fileID: 2100000, guid: ad7810873000143c083b408a70916d1f, type: 2}
+  - {fileID: 2100000, guid: fb1ce52e2484043678697346d1a42980, type: 2}
+  - {fileID: 2100000, guid: 8dafb4fd698eb415f997bd7a378f82ed, type: 2}
+  - {fileID: 2100000, guid: cd043999f20d34a239cac6de02c48bed, type: 2}
+  - {fileID: 2100000, guid: e5bf2b2b444d14b8198804cd9b5d837c, type: 2}
+  - {fileID: 2100000, guid: 0d7b0b5aa24fd4a47924c43015a3396e, type: 2}
+  - {fileID: 2100000, guid: 04411ba8015964cc0ac46ad213261865, type: 2}
+  - {fileID: 2100000, guid: 8dafb4fd698eb415f997bd7a378f82ed, type: 2}
+  - {fileID: 2100000, guid: 64cc86da1a1f249d9925255c4bdd113e, type: 2}
+  - {fileID: 2100000, guid: 0d7b0b5aa24fd4a47924c43015a3396e, type: 2}
