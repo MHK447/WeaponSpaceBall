@@ -7,7 +7,7 @@ public class TutorialEntityHoldToMove : TutorialEntity
     [SerializeField]
     private Slider Slider;
 
-    InGameCamera Cam;
+   
 
     private float touchtime = 0f;
 
@@ -25,7 +25,7 @@ public class TutorialEntityHoldToMove : TutorialEntity
 
     private void Update()
     {
-        if (Cam == null) return;
+       // if (Cam == null) return;
 
 
         // if(Cam.IsTouching)

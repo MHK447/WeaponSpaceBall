@@ -14,9 +14,9 @@ public interface IInGameMode
 public abstract class InGameMode : MonoBehaviour, IInGameMode
 {
     [SerializeField]
-    private InGameCamera MainCam;
+    private Camera MainCam;
 
-    public InGameCamera GetMainCam { get { return MainCam; } }
+    public Camera GetMainCam { get { return MainCam; } }
 
     public float CamPixelWidth { get; private set; }
     public float CamPixelHeight { get; private set; }
@@ -24,8 +24,8 @@ public abstract class InGameMode : MonoBehaviour, IInGameMode
 
     private void Awake()
     {
-        CamPixelWidth = MainCam.GetCam.pixelWidth;
-        CamPixelHeight = MainCam.GetCam.pixelHeight;
+        // CamPixelWidth = MainCam.GetCam.pixelWidth;
+        // CamPixelHeight = MainCam.GetCam.pixelHeight;
         if (GameRoot.IsInit())
         {
             GameRoot.Instance.InGameSystem.RegisteInGame(this);
@@ -90,7 +90,7 @@ public abstract class InGameMode : MonoBehaviour, IInGameMode
 
     public void SetCameraBoundMinY(float value)
     {
-        MainCam.GetCam.transform.position = new Vector3(0f, value, -10f);
+        //MainCam.GetCam.transform.position = new Vector3(0f, value, -10f);
     }
 
     public virtual void Load()

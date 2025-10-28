@@ -9,16 +9,9 @@ using DG.Tweening;
 [UIPath("UI/Popup/PopupInGameLobby")]
 public class PopupInGameLobby : UIBase
 {
-    [SerializeField]
-    private List<LobbyUpgradeComponent> LobbyUpgradeComponents = new List<LobbyUpgradeComponent>();
 
     [SerializeField]
     private Button StageBtn;
-
-    [SerializeField]
-    private AdCycleComponent AdCycleComponent;
-
-
 
     [SerializeField]
     private TextMeshProUGUI TapToStartText;
@@ -49,12 +42,6 @@ public class PopupInGameLobby : UIBase
 
     public void Init()
     {
-        GameRoot.Instance.InGameSystem.GetInGame<InGameBase>().StageMap.SetState(InGameStage.InGameState.WaitPlay);
-
-        for (int i = 0; i < LobbyUpgradeComponents.Count; i++)
-        {
-            LobbyUpgradeComponents[i].Set(i);
-        }
 
         var stageidx = GameRoot.Instance.UserData.Stageidx.Value;
 
@@ -67,15 +54,9 @@ public class PopupInGameLobby : UIBase
             BgImg.color = Config.Instance.GetImageColor(td.image_color);
             MapText.fontSharedMaterial = Config.Instance.TextMaterialList[stageidx - 1];
 
-            AdCycleComponent.Init();
         }
     }
 
-
-    public LobbyUpgradeComponent GetLobbyUpgradeComponent(int index)
-    {
-        return LobbyUpgradeComponents[index];
-    }
 
     private void StartTapToStartAnimation()
     {

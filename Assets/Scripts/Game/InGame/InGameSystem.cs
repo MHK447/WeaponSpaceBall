@@ -215,13 +215,13 @@ public class InGameSystem
         {
             firstInit = true;
             // 로딩은 스테이지 로드 완료 후에 숨기도록 변경
-            // GameRoot.Instance.Loading.Hide(true, () =>
-            // {
-            //     NextAction();
-            // });
+            GameRoot.Instance.Loading.Hide(true, () =>
+            {
+                NextAction();
+            });
 
             NextAction();
-            GameRoot.Instance.UISystem.OpenUI<PopupInGameLobby>(popup=> popup.Init());
+            GameRoot.Instance.UISystem.OpenUI<PopupInGame>(popup=> popup.Init());
         }
 
         NextAction();

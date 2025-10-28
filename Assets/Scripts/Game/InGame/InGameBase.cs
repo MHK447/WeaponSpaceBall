@@ -29,7 +29,7 @@ public class InGameBase : InGameMode
 
         SetStage(GameRoot.Instance.UserData.Stageidx.Value);
         yield return new WaitUntil(() => StageMap != null);
-        GetMainCam.Init();
+        //GetMainCam.Init();
         
         // 스테이지 로드 완료 후 로딩 숨기기
         GameRoot.Instance.Loading.Hide(true);
@@ -45,11 +45,11 @@ public class InGameBase : InGameMode
         if (stageinfotd != null)
         {
             //temp  
-            Addressables.InstantiateAsync(stageinfotd.prefab).Completed += (handle) =>
-            {
-                StageMap = handle.Result.GetComponent<InGameStage>();
-                StageMap.CallStartGame();
-            };
+            // Addressables.InstantiateAsync(stageinfotd.prefab).Completed += (handle) =>
+            // {
+            //     StageMap = handle.Result.GetComponent<InGameStage>();
+            //     StageMap.CallStartGame();
+            // };
         }
     }
 

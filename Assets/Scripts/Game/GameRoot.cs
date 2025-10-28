@@ -21,9 +21,6 @@ public class GameRoot : Singleton<GameRoot>
 	[SerializeField]
 	private GameObject DebugConsoleObj;
 
-	[SerializeField]
-	private Joystick JoyStick;
-
 	[HideInInspector]
 	public LoadingBasic Loading;
 	[SerializeField]
