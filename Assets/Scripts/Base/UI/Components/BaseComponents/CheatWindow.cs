@@ -91,7 +91,7 @@ public class CheatWindow : MonoBehaviour
             BpLog.LogError("input field string don't convert number!");
             return;
         }
-
+    
         inputField.text = "";
 
         GameRoot.Instance.TutorialSystem.StartTutorial(convert.ToString());

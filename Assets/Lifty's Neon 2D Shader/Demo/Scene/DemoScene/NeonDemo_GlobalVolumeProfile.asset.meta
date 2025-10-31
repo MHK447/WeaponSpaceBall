@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8e07f860c7e2ee04d9d3d6cc0792614d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 321394
+  packageName: Neon Texture Shader
+  packageVersion: 1.0
+  assetPath: Assets/Lifty's Neon 2D Shader/Demo/Scene/DemoScene/NeonDemo_GlobalVolumeProfile.asset
+  uploadId: 759224
