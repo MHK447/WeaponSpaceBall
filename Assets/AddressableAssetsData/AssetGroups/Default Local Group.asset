@@ -25,11 +25,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 09dc682ca950848c0902959bf1504483
-    m_Address: Atlas_UI_InGameFish
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13c699775dd24d8469b6d3226c7b6a72
     m_Address: UI/Component/GoodsEffect
     m_ReadOnly: 0
@@ -197,11 +192,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 64b11461136fe4bdb9c4e3e3cf49e08a
-    m_Address: Atlas_UI_Common
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 68944d35078234cd984ea89c37dad385
     m_Address: UI/Popup/PopupInGame
     m_ReadOnly: 0
@@ -317,11 +307,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a0e24c741e09f4e67903983f1e4dd134
-    m_Address: Atlas_UI_Map
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a1b1f95a4d8df4fe0a0c4e0208e8a1fe
     m_Address: UI/Popup/Popup_Pass
     m_ReadOnly: 0
@@ -344,11 +329,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3136039c9412417abefdfd08360ea83
     m_Address: UI/Popup/Popup_Offline
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bf678b4e56f358a4b8cddcb851ac8165
-    m_Address: Atlas_UI_InGameStage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -454,6 +434,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e4b2c1ca2572b4762967f68bdb5e455c
     m_Address: SoundPlayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4e7294bc17034dc99297f4b764e4e85
+    m_Address: Atlas_UI_Common
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
