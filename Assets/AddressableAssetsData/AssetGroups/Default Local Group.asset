@@ -20,11 +20,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 06a48d8af5ddc4c22844008a656d4e67
-    m_Address: Fish_1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13c699775dd24d8469b6d3226c7b6a72
     m_Address: UI/Component/GoodsEffect
     m_ReadOnly: 0
@@ -55,11 +50,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2687365683317bb4fbda216fd9e517ed
-    m_Address: Stage_Map_01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 279f5b7e303b07d4c8aad42a8577d7bd
     m_Address: UI/Page/PageShop
     m_ReadOnly: 0
@@ -81,11 +71,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3bd2dbabbfcac4a88a54b1fd27bff15e
-    m_Address: UI/InGame/BalanceFloatingUIComponent
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3c959cdeefa244e9a8065cd9e9fa774a
     m_Address: UI/Popup/PopupInGameLobby
     m_ReadOnly: 0
@@ -93,11 +78,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 422959811759b4acf9e553598a74be18
     m_Address: UI/Component/RewardEffect
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42b14f468e38cf54899626cd15dd275e
-    m_Address: Stage_Map_03
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -113,12 +93,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 47453081c9bb44e83aeaed5c0f7fa435
     m_Address: UI/Top/ToastMessage_Topbar_Single_Purple
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4967bea7482277d48955ef26a2a50c7c
-    m_Address: Assets/SimplePoly City - Low Poly Assets/Materials/Building_Coffee
-      Shop.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -164,11 +138,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5c8fe8ec86447415084d847d1b56111c
     m_Address: UI/Popup/Popup03_Divided_Single_Navy
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 61c93f0ce8ef341679cd4afaa0f04dbc
-    m_Address: Fish_4
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -222,18 +191,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7e4a216e589dc43009565c182383dac2
-    m_Address: Fish_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8004488da7e234e35a8251a48d26a4de
     m_Address: Effect/TextEffectMoney
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8830f135423dea14fbedb935559cf63b
-    m_Address: Stage_Map_02
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -249,11 +208,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 928201c344a7e4f3780e4f2d6a1566dd
     m_Address: UI/Popup/_PrefabsPanel_Popups
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 93bf2c35aedd6ac43aa825668b8e86eb
-    m_Address: Stage_Map_04
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -302,11 +256,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c2553bf9fdf9a6d4692e3931515833a0
-    m_Address: Stage_Map_05
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c3ac434fd15296347baefd290f83e2c8
     m_Address: Effect/MergeEffect
     m_ReadOnly: 0
@@ -319,11 +268,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c7a1092cf31ef4ddcae7552b5d37686d
     m_Address: UI/Popup/Popup_Signup
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ccef98b4a78ce45e1b66ebd06704bf8c
-    m_Address: Fish_3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
