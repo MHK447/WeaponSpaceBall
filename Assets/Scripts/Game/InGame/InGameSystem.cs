@@ -113,21 +113,6 @@ public class InGameSystem
 
                     if (!Init)
                     {
-                        // 새 스테이지를 시작하기 전에 광고 관련 리소스 해제
-                        try
-                        {
-                            var adManager = GameObject.FindObjectOfType<AdManager>();
-                            if (adManager != null)
-                            {
-                                // 광고 관련 작업을 스테이지 로드 후로 지연
-                                adManager.gameObject.SendMessage("PauseAdOperations", true, SendMessageOptions.DontRequireReceiver);
-                            }
-                        }
-                        catch (System.Exception e)
-                        {
-                            Debug.LogWarning("AdManager 접근 중 오류 발생: " + e.Message);
-                        }
-
                         StartGame(GameRoot.Instance.CurInGameType, LoadCallBack);
                     }
                 });
@@ -158,26 +143,6 @@ public class InGameSystem
         if (inGameBase != null)
         {
             inGameBase.StartCoroutine(inGameBase.WaitStageLoad());
-        }
-
-        // 스테이지 로드 완료 후 광고 관련 작업 재개
-        try
-        {
-            var adManager = GameObject.FindObjectOfType<AdManager>();
-            if (adManager != null)
-            {
-                // 1초 후 광고 관련 작업 재개
-                GameRoot.Instance.WaitTimeAndCallback(1f, () =>
-                {
-                    adManager.gameObject.SendMessage("PauseAdOperations", false, SendMessageOptions.DontRequireReceiver);
-                });
-            }
-
-            
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogWarning("AdManager 재개 중 오류 발생: " + e.Message);
         }
     }
 
@@ -215,13 +180,25 @@ public class InGameSystem
         {
             firstInit = true;
             // 로딩은 스테이지 로드 완료 후에 숨기도록 변경
-            GameRoot.Instance.Loading.Hide(true, () =>
-            {
-                NextAction();
-            });
+            // GameRoot.Instance.Loading.Hide(true, () =>
+            // {
+            //     NextAction();
+            // });
 
             NextAction();
-            GameRoot.Instance.UISystem.OpenUI<PopupInGame>(popup=> popup.Init());
+
+
+            ActionQueue.Enqueue(() => {
+                GameRoot.Instance.UISystem.OpenUI<PopupInGameLobby>(popup=> {
+                     popup.Init();
+                     NextAction();
+                });
+            });
+
+
+            ActionQueue.Enqueue(() => {
+                NextAction();
+            });
         }
 
         NextAction();

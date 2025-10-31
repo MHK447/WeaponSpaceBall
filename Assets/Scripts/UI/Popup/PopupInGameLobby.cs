@@ -9,9 +9,16 @@ using DG.Tweening;
 [UIPath("UI/Popup/PopupInGameLobby")]
 public class PopupInGameLobby : UIBase
 {
+    [SerializeField]
+    private List<LobbyUpgradeComponent> LobbyUpgradeComponents = new List<LobbyUpgradeComponent>();
 
     [SerializeField]
     private Button StageBtn;
+
+    [SerializeField]
+    private AdCycleComponent AdCycleComponent;
+
+
 
     [SerializeField]
     private TextMeshProUGUI TapToStartText;
@@ -43,20 +50,39 @@ public class PopupInGameLobby : UIBase
     public void Init()
     {
 
+        for (int i = 0; i < LobbyUpgradeComponents.Count; i++)
+        {
+            LobbyUpgradeComponents[i].Set(i);
+        }
+
         var stageidx = GameRoot.Instance.UserData.Stageidx.Value;
 
         var td = Tables.Instance.GetTable<StageInfo>().GetData(stageidx);
 
-        if(td != null)
+        if (td != null)
         {
             MapImg.sprite = AtlasManager.Instance.GetSprite(Atlas.Atlas_UI_Map, td.image);
-            MapText.text = Tables.Instance.GetTable<Localize>().GetString(td.name);
+            MapText.text = $"STAGE {stageidx}";
             BgImg.color = Config.Instance.GetImageColor(td.image_color);
-            MapText.fontSharedMaterial = Config.Instance.TextMaterialList[stageidx - 1];
 
+            var fontvalue = GameRoot.Instance.UserData.Stageidx.Value % Config.Instance.TextMaterialList.Count;
+
+            if (fontvalue == 0)
+            {
+                fontvalue = Config.Instance.TextMaterialList.Count - 1;
+            }
+
+            MapText.fontSharedMaterial = Config.Instance.TextMaterialList[fontvalue - 1];
+
+            AdCycleComponent.Init();
         }
     }
 
+
+    public LobbyUpgradeComponent GetLobbyUpgradeComponent(int index)
+    {
+        return LobbyUpgradeComponents[index];
+    }
 
     private void StartTapToStartAnimation()
     {

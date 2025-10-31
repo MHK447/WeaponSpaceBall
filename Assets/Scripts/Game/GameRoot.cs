@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using BanpoFri;
+using UniRx;
+using UniRx.Async;
 
 public class GameRoot : Singleton<GameRoot>
 {
@@ -21,14 +23,13 @@ public class GameRoot : Singleton<GameRoot>
 	[SerializeField]
 	private GameObject DebugConsoleObj;
 
+
 	[HideInInspector]
 	public LoadingBasic Loading;
-	[SerializeField]
-	private AdManager AdManager;
-	[SerializeField]
-	private InAppPurchaseManager inAppPurchaseManager;
 
-	public InAppPurchaseManager GetInAppPurchaseManager { get { return inAppPurchaseManager; } }
+
+	public InAppPurchaseManager InAppPurchaseManager;
+
 
 	public RectTransform GetMainCanvasTR { get { return MainCanvas.transform as RectTransform; } }
 	public UISystem UISystem { get; private set; } = new UISystem();
@@ -50,13 +51,10 @@ public class GameRoot : Singleton<GameRoot>
 
 	public UpgradeSystem UpgradeSystem { get; private set; } = new UpgradeSystem();
 
-	[SerializeField]
-	private ATTManager attManager;
-	public ATTManager GetATTManager { get { return attManager; } }
+
+	public UnityMainThreadDispatcher MainThreadDispatcher;
 
 	private Queue<System.Action> PauseActions = new Queue<System.Action>();
-
-	public AdManager GetAdManager { get { return AdManager; } }
 
 	public GameObject UILock;
 	private static bool InitTry = false;
@@ -215,9 +213,9 @@ public class GameRoot : Singleton<GameRoot>
 		//TouchStartActions.Clear();
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		PluginSystem.Init();
-		//InAppPurchaseManager = GetComponent<InAppPurchaseManager>();
-		//if (InAppPurchaseManager != null)
-		//	InAppPurchaseManager.Init();
+		InAppPurchaseManager = GetComponent<InAppPurchaseManager>();
+		if (InAppPurchaseManager != null)
+			InAppPurchaseManager.Init();
 		//SnapshotCam = SnapshotCamera.MakeSnapshotCamera("SnapShot");
 		//SnapshotCam.transform.SetParent(this.transform);
 		//SnapshotCam.transform.position = new Vector3(0f, 0f, -1f);
@@ -258,12 +256,10 @@ public class GameRoot : Singleton<GameRoot>
 		InGameSystem.Create();
 		GameNotification.Create();
 		ShopSystem.Create();
-		GameRoot.instance.inAppPurchaseManager.InitializePurchasing();
+		GameRoot.instance.InAppPurchaseManager.InitializePurchasing();
 
 		InitRequestAtlas();
 
-		// ATT 권한 요청 초기화 (iOS에서만)
-		InitializeATTManager();
 
 		GameRoot.instance.WaitTimeAndCallback(0.5f, () =>
 		{
@@ -288,36 +284,11 @@ public class GameRoot : Singleton<GameRoot>
 		}
 	}
 
-	private void InitializeATTManager()
-	{
-		// ATTManager가 아직 없다면 동적으로 생성
-		if (attManager == null)
-		{
-			GameObject attManagerObj = new GameObject("ATTManager");
-			attManager = attManagerObj.AddComponent<ATTManager>();
-			DontDestroyOnLoad(attManagerObj);
-		}
-
-		// 이벤트 연결
-		if (attManager != null)
-		{
-			attManager.OnATTResponse += OnATTResponseReceived;
-		}
-	}
-
 	private void OnATTResponseReceived(bool isAuthorized)
 	{
 		Debug.Log($"ATT 권한 응답 받음: {isAuthorized}");
 
-		// 광고 SDK에 ATT 상태 전달 및 초기화
-		if (AdManager != null)
-		{
-			// iOS에서는 ATT 권한 완료 후 AdMob 초기화
-			if (Application.platform == RuntimePlatform.IPhonePlayer)
-			{
-				AdManager.InitializeAdsAfterATT(isAuthorized);
-			}
-		}
+
 
 		// 필요시 다른 추적 관련 SDK들에도 상태 전달
 	}
@@ -363,16 +334,29 @@ public class GameRoot : Singleton<GameRoot>
 
 		var count = GameRoot.instance.UserData.GetRecordCount(Config.RecordCountKeys.Init);
 
-
-		if (count == 0)
+		if (GameRoot.Instance.UserData.Stageidx.Value == 1 && count == 0)
 		{
+			if (UserData.UUID == 0)
+				UserData.SetUUID(ProjectUtility.GetUUID());
+
 			GameRoot.instance.UserData.AddRecordCount(Config.RecordCountKeys.Init, 1);
 			SetNativeLanguage();
+
+			PluginSystem.InitMax(() =>
+			{
+				PluginSystem.AnalyticsProp.AllEvent(IngameEventType.None, "install");
+			});
+
+
 		}
 		else
 		{
 
+			PluginSystem.InitMax();
+
+			Config.Instance.UpdateFallbackOrder(UserData.Language);
 		}
+
 
 	}
 
@@ -392,12 +376,6 @@ public class GameRoot : Singleton<GameRoot>
 		}
 	}
 
-	IEnumerator waitTimeAndCallback(float time, System.Action callback)
-	{
-		yield return new WaitForSeconds(time);
-		callback?.Invoke();
-	}
-
 	IEnumerator waitFrameAndCallback(int frame, System.Action callback)
 	{
 		for (int i = 0; i < frame; i++)
@@ -407,10 +385,30 @@ public class GameRoot : Singleton<GameRoot>
 
 	}
 
-	public void WaitTimeAndCallback(float time, System.Action callback)
+	IEnumerator waitTimeAndCallback(float time, System.Action callback)
 	{
-		StartCoroutine(waitTimeAndCallback(time, callback));
+		yield return new WaitForSeconds(time);
+		callback?.Invoke();
 	}
+
+	IEnumerator waitRealTimeAndCallback(float time, System.Action callback)
+	{
+		yield return new WaitForSecondsRealtime(time);
+		callback?.Invoke();
+	}
+
+	public Coroutine WaitStageAndCallback(float time, System.Action callback)
+	{
+		return StartCoroutine(waitTimeAndCallback(time, callback));
+	}
+
+	public Coroutine WaitTimeAndCallback(float time, System.Action callback)
+	{
+		return StartCoroutine(waitTimeAndCallback(time, callback));
+	}
+
+
+
 
 	public void WaitFrameAndCallback(int frame, System.Action callback)
 	{

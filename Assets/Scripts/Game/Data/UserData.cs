@@ -60,6 +60,11 @@ public partial class UserDataSystem
         DataState = DataState.None;
     }
 
+    public void SetUUID(long uuid)
+    {
+        UUID = uuid;
+    }
+
     public void Load()
     {
         var filePath = GameRoot.Instance.UserData.GetBackUpSaveFilePath("backup");
@@ -99,7 +104,7 @@ public partial class UserDataSystem
             }
             catch (Exception ex)
             {
-                TpLog.LogError("Data Error!!" + ex.Message);
+                BpLog.LogError("Data Error!!" + ex.Message);
                 isSafeData = false;
             }
             finally
@@ -133,7 +138,7 @@ public partial class UserDataSystem
             }
             catch (Exception ex)
             {
-                TpLog.LogError("Data Error!! Backup : " + ex.Message);
+                BpLog.LogError("Data Error!! Backup : " + ex.Message);
                 isSuccess = false;
             }
 
@@ -176,7 +181,7 @@ public partial class UserDataSystem
     {
         if (!isSafeData)
         {
-            TpLog.LogError("Data Error!! Can not save file");
+            BpLog.LogError("Data Error!! Can not save file");
             return;
         }
 

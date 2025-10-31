@@ -94,7 +94,7 @@ public class TutorialEntityClickWait : TutorialEntity
                                 break;
                             case RenderMode.WorldSpace:
                                 {
-                                    Camera cam = GameRoot.Instance.InGameSystem.CurInGame.GetMainCam;
+                                    Camera cam = GameRoot.Instance.InGameSystem.CurInGame.GetMainCam.GetCam;
 
                                     if (cam == null)
                                     {
@@ -137,7 +137,7 @@ public class TutorialEntityClickWait : TutorialEntity
             }
             else
             {
-                Camera cam = GameRoot.Instance.InGameSystem.CurInGame.GetMainCam;
+                Camera cam = GameRoot.Instance.InGameSystem.CurInGame.GetMainCam.GetCam;
 
 
                 if (cam == null)

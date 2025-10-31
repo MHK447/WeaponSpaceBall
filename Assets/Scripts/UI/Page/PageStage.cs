@@ -14,7 +14,8 @@ public class PageStage : UIBase
     [SerializeField]
     private TextMeshProUGUI NextStageGoalText;
 
-   
+    [SerializeField]
+    private List<StageComponent> StageComponents = new List<StageComponent>();
 
 
     public void Init()
@@ -28,6 +29,12 @@ public class PageStage : UIBase
 
 
 
+        int idxs = 0;
+        for (int i = endgoal - 5; i < endgoal; ++i)
+        {
+            StageComponents[idxs].Set(i + 1);
+            idxs++;
+        }
     }
 
     public void Interaction(int stageidx , System.Action nextaction)
@@ -35,5 +42,6 @@ public class PageStage : UIBase
         Init();
         GameRoot.Instance.WaitTimeAndCallback(1.5f , nextaction);
         GameRoot.Instance.WaitTimeAndCallback(2f , Hide);
+        StageComponents.Find(x=> x.GetStageIdx == stageidx)?.UnLockAction();
     }
 }

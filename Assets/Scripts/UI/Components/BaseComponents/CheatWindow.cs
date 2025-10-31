@@ -16,13 +16,13 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
         inputField.text = "";
@@ -35,13 +35,13 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
         inputField.text = "";
@@ -52,14 +52,14 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
 
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
 
@@ -81,14 +81,14 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
 
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
 
@@ -102,20 +102,46 @@ public class CheatWindow : MonoBehaviour
         GameRoot.Instance.SetCheatWindow(false);
     }
 
-
-    public void AddHeroUnit()
+    public void SetStageMove()
     {
-
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
 
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
+            return;
+        }
+
+        inputField.text = "";
+
+        GameRoot.Instance.InGameSystem.GetInGame<InGameBase>().StageMap.NextStage((int)convert);
+    }
+
+    public void StageClearCheat()
+    {
+        GameRoot.Instance.UISystem.OpenUI<PopupStageClear>(popup => popup.Set(2000000000000000000, () => {
+            GameRoot.Instance.InGameSystem.GetInGame<InGameBase>().StageMap.NextStage(GameRoot.Instance.UserData.Stageidx.Value + 1);
+        }));
+    }
+
+    public void AddHeroUnit()
+    {
+
+        if (string.IsNullOrEmpty(inputField.text))
+        {
+            BpLog.LogError("input field empty!");
+            return;
+        }
+
+        BigInteger convert;
+        if (!BigInteger.TryParse(inputField.text, out convert))
+        {
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
 
@@ -127,13 +153,13 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
         inputField.text = "";
@@ -144,13 +170,13 @@ public class CheatWindow : MonoBehaviour
     {
         if (string.IsNullOrEmpty(inputField.text))
         {
-            TpLog.LogError("input field empty!");
+            BpLog.LogError("input field empty!");
             return;
         }
         BigInteger convert;
         if (!BigInteger.TryParse(inputField.text, out convert))
         {
-            TpLog.LogError("input field string don't convert number!");
+            BpLog.LogError("input field string don't convert number!");
             return;
         }
         inputField.text = "";
