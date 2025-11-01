@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0deb942f98a5142a5b77e965375ba80d
+    m_Address: Weapon_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13c699775dd24d8469b6d3226c7b6a72
     m_Address: UI/Component/GoodsEffect
     m_ReadOnly: 0
@@ -27,6 +32,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 186863dbd42a14ac0bc636a17fdf7596
     m_Address: UI/Popup/Equipment_Popup_Detail2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b1dd580a2d71463d9e91629d969f3e2
+    m_Address: Weapon_1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -63,6 +73,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2cda990e2423bbf4892e6590ba056729
     m_Address: InGameTycoon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c19d81ef000b4cfabf64c10d3315878
+    m_Address: PlayerUnit_1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -221,6 +236,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5e8f59bffe7c4843aa63a21d9cbfbea
+    m_Address: UI/Popup/PopupInGame
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a74791df3acd44304b1e92614d1e4e5a
     m_Address: UI/Top/PanelFrame03_Topbar_Navy
     m_ReadOnly: 0
@@ -353,6 +373,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eab5b45f9cb63403a980a8429e571f2b
     m_Address: UI/Popup/Popup_FullWidth03_Single_Navy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f02fdbf1e5d1ba244bff7db3790b3741
+    m_Address: UI/InGame/InGameHpProgress
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

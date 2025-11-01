@@ -6,43 +6,43 @@ using System.Linq;
 using BanpoFri;
 
 
-    public enum Language
-    {
-        en,
-        ko,
-        es,
-        ja,
-        ptbr,
-        th,
-        tw,
-        vi,
-        bg,
-        cn,
-        cs,
-        da,
-        nl,
-        et,
-        fi,
-        fr,
-        de,
-        el,
-        hu,
-        id,
-        it,
-        lv,
-        lt,
-        no,
-        pl,
-        pt,
-        ro,
-        ru,
-        sk,
-        sl,
-        sv,
-        tr,
-        ua
+public enum Language
+{
+    en,
+    ko,
+    es,
+    ja,
+    ptbr,
+    th,
+    tw,
+    vi,
+    bg,
+    cn,
+    cs,
+    da,
+    nl,
+    et,
+    fi,
+    fr,
+    de,
+    el,
+    hu,
+    id,
+    it,
+    lv,
+    lt,
+    no,
+    pl,
+    pt,
+    ro,
+    ru,
+    sk,
+    sl,
+    sv,
+    tr,
+    ua
 
-    }
+}
 
 
 [System.Serializable]
@@ -52,10 +52,14 @@ public class FontDefine
     public Font font;
 }
 
+
 [System.Serializable]
 public class Config : BanpoFri.SingletonScriptableObject<Config>, BanpoFri.ILoader
 {
-
+    public enum FloatingUIDepth
+    {
+        HpProgress,
+    }
     public enum LandCondination
     {
         Great,

@@ -18,6 +18,8 @@ public class PageLobbyBattle : CommonUIBase
 
     public void OnStartBtnClick()
     {
+        Hide();
+
         StartBtn.interactable = false;
         GameRoot.Instance.InGameSystem.GetInGame<InGameBase>().Stage.StartBattle();
     }

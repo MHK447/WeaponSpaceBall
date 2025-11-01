@@ -12,16 +12,18 @@ TagManager:
   - Food
   - EnergyAd
   - FxTemporaire
+  - Wall
+  - MainLobby
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Sea
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - PlayerWeapon
+  - EnemyWeapon
   - 
   - 
   - 

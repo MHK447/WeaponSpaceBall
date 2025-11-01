@@ -36,6 +36,50 @@ namespace BanpoFri
         }
     }
 
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class FloatingDepthAttribute : Attribute
+    {
+        public int depth = 0;
+
+        public FloatingDepthAttribute(int _depth = 0)
+        {
+            depth = _depth;
+        }
+    }
+
+
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class FloatUIPathAttribute : Attribute
+    {
+        private string path;
+        private bool world;
+
+        public FloatUIPathAttribute(string name, bool _world = true)
+        {
+            path = name;
+            world = _world;
+        }
+
+        public string Path
+        {
+            get
+            {
+                return path;
+            }
+        }
+
+        public bool World
+        {
+            get
+            {
+                return world;
+            }
+        }
+    }
+
+
     [AttributeUsage(AttributeTargets.Class)]
     public class UIPathAttribute : Attribute
     {

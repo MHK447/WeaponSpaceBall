@@ -339,7 +339,30 @@ namespace BanpoFri
             var attrs = Attribute.GetCustomAttributes(TType);
             foreach (var attr in attrs)
             {
-                if (attr is UIPathAttribute)
+                if (attr is FloatUIPathAttribute)
+                {
+                    var uiPath = (FloatUIPathAttribute)attr;
+                    var handle = Addressables.InstantiateAsync(uiPath.Path);
+                    handle.Completed += (obj) =>
+                    {
+                        var inst = obj.Result;
+                        GameObject parent;
+                        if (cachedIngameUITrans.ContainsKey(TType))
+                            parent = cachedIngameUITrans[TType];
+                        else
+                        {
+                            parent = new GameObject(TType.ToString());
+                            parent.transform.SetParent(WorldCanvas.transform);
+                            parent.transform.position = Vector3.zero;
+                            parent.transform.localScale = Vector3.one;
+                            cachedIngameUITrans.Add(TType, parent);
+                        }
+                        inst.transform.SetParent(parent.transform, false);
+                        onSuccess?.Invoke(inst.GetComponent<T>());
+                    };
+                    break;
+                }
+                else if (attr is UIPathAttribute)
                 {
                     var uiPath = (UIPathAttribute)attr;
                     var handle = Addressables.InstantiateAsync(uiPath.Path);
