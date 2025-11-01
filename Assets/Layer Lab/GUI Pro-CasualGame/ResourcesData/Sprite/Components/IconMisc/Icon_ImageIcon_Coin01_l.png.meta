@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: fb04a863f085a4eacb555126229b6153
+guid: f17081eadf2424321bc96b05f909b8c6
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/IconMisc/Icon_ImageIcon_Coin01_l.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

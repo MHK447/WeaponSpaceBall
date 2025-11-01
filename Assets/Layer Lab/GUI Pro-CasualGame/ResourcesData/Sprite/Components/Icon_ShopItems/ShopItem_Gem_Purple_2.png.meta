@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 705bbba5197434b968b26b777b3a265d
+guid: 1e807015c90de4de4ac5107cfc7d24dc
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Icon_ShopItems/ShopItem_Gem_Purple_2.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

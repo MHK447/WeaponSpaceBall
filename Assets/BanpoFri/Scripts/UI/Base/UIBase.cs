@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 namespace BanpoFri
 {
+    public enum ShowFlag
+    {
+        None = 0,
+        IGNORE = 1 << 0,
+        Coin = 1 << 1,
+        Material = 1 << 2,
+        Setting = 1 << 3,
+        Profile = 1 << 4,
+    }
+
+
     [AttributeUsage(AttributeTargets.Class)]
     public class UIEventPathAttribute : Attribute
     {
@@ -69,17 +80,18 @@ namespace BanpoFri
         Page,
         Popup,
         Top,
+        OverlayPopup = 3,
     }
 
     interface IUIBase
     {
-        UIBaseType UIType {get;}
+        UIBaseType UIType { get; }
     }
 
     public interface IScreenAction
     {
-        UIBase.HUDType[] HudType {get;}
-        bool IsScreenAction {get;}
+        UIBase.HUDType[] HudType { get; }
+        bool IsScreenAction { get; }
         void ScreenAction(bool value);
         bool IsScreenTopOn();
         void ScreenTopOn(bool value);
@@ -113,7 +125,6 @@ namespace BanpoFri
 
         }
 
-        public HudCurrencyTop CurrencyTop;
 
 
         [Serializable]
@@ -129,9 +140,13 @@ namespace BanpoFri
         }
         [SerializeField]
         private UIBaseType uiType;
-        public UIBaseType UIType { get{
-            return uiType;
-        }}
+        public UIBaseType UIType
+        {
+            get
+            {
+                return uiType;
+            }
+        }
         [HideInInspector]
         [SerializeField]
         protected string uiShowStateName;
@@ -149,40 +164,52 @@ namespace BanpoFri
 
         public Action OnUIHide = null;
         public Action OnUIHideAfter = null;
-		public Action OnUIShowBefore = null;
-		public Action OnUIShowAfter = null;
+        public Action OnUIShowBefore = null;
+        public Action OnUIShowAfter = null;
         protected bool manualAnimator = false;
         private OriginSortingData originSortingData = new OriginSortingData();
 
+        [SerializeField]
+        protected bool ResetCurrency = true;
+
+        [SerializeField]
+        protected ShowFlag CurrencyToShow;
+
         public bool isInHide { get { return activeAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hide"); } }
 
-        protected virtual void Awake() {            
-            if(closeBtn != null)
-                closeBtn.onClick.AddListener(Hide);  
+        protected virtual void Awake()
+        {
+            if (closeBtn != null)
+                closeBtn.onClick.AddListener(Hide);
         }
 
-        protected virtual void OnEnable() 
+        protected virtual void OnEnable()
         {
-            if(activeAnimator == null)
+            if (activeAnimator == null)
             {
                 OnShowBefore();
-                OnShowAfter();            
-                if(closeBtn != null)
+                OnShowAfter();
+                if (closeBtn != null)
                     closeBtn.interactable = true;
-            }    
+            }
             else
             {
-                if(manualAnimator)
+                if (manualAnimator)
                     return;
-                    
-                if(!activeAnimator.enabled)
+
+                if (!activeAnimator.enabled)
                     activeAnimator.enabled = true;
                 activeAnimator.Play(uiShowStateName, 0, 0f);
-                if(closeBtn != null)
-                    StartCoroutine(WaitCallback(touchLockTime, () => {
+                if (closeBtn != null)
+                    StartCoroutine(WaitCallback(touchLockTime, () =>
+                    {
                         closeBtn.interactable = true;
                     }));
             }
+        }
+
+        public virtual void CurrencyTopShow()
+        {
         }
 
         public virtual void SaveOringSortingData()
@@ -194,7 +221,7 @@ namespace BanpoFri
 
         public virtual int GetSortingOrderLayer()
         {
-           return GetComponent<Canvas>().sortingOrder;
+            return GetComponent<Canvas>().sortingOrder;
         }
 
 
@@ -213,26 +240,26 @@ namespace BanpoFri
         public void ReOderParticleInUIBase()
         {
             var parentOrder = GetComponent<Canvas>().sortingOrder;
-            foreach(var obj in sortingObjects)
+            foreach (var obj in sortingObjects)
             {
                 var canvas = obj.target.GetComponent<Canvas>();
-                if(canvas != null)
+                if (canvas != null)
                 {
                     canvas.sortingOrder = obj.order + parentOrder;
                 }
                 else
                 {
                     var particle = obj.target.GetComponent<ParticleSystemRenderer>();
-                    if(particle != null)
+                    if (particle != null)
                     {
                         particle.sortingOrder = obj.order + parentOrder;
                     }
                 }
             }
-            if(batchParticleOrder)
+            if (batchParticleOrder)
             {
                 var particles = GetComponentsInChildren<ParticleSystemRenderer>();
-                foreach(var particle in particles)
+                foreach (var particle in particles)
                 {
                     particle.sortingOrder = parentOrder + 88;
                 }
@@ -241,21 +268,16 @@ namespace BanpoFri
 
         protected void ShowImediately()
         {
-            if(activeAnimator)
+            if (activeAnimator)
             {
                 activeAnimator.ResetTrigger("Hide");
                 activeAnimator.Play(uiShowStateName, 0, 0f);
             }
         }
 
-        public Transform GetCurrencyImgTr(int rewardtypeidx , int rewardidx)
-        {
-            return CurrencyTop.GetImageTr(rewardtypeidx , rewardidx);
-        }
-
         public virtual void Show()
         {
-            if(closeBtn != null)    
+            if (closeBtn != null)
                 closeBtn.interactable = false;
 
             if (!gameObject.activeSelf)
@@ -270,7 +292,7 @@ namespace BanpoFri
 
         public virtual void OnShowBefore()
         {
-            for(var i = 0; i < this.transform.childCount; ++i)
+            for (var i = 0; i < this.transform.childCount; ++i)
             {
                 var child = this.transform.GetChild(i);
                 Utility.SetActiveCheck(child.gameObject, true);
@@ -288,8 +310,8 @@ namespace BanpoFri
 
         public virtual void OnShowAfter()
         {
-            if(closeBtn != null)
-            closeBtn.interactable = true;
+            if (closeBtn != null)
+                closeBtn.interactable = true;
 
             OnUIShowAfter?.Invoke();
             OnUIShowAfter = null;
@@ -319,21 +341,21 @@ namespace BanpoFri
             OnUIHideAfter?.Invoke();
             OnUIHideAfter = null;
 
-       
+
         }
 
         public virtual void Hide()
         {
             OnUIHide?.Invoke();
             OnUIHide = null;
-			if (activeAnimator)
-				activeAnimator.Play("Hide", -1, 0f);
-			else
-				OnHideAfter();
-            if(closeBtn != null)
+            if (activeAnimator)
+                activeAnimator.Play("Hide", -1, 0f);
+            else
+                OnHideAfter();
+            if (closeBtn != null)
                 closeBtn.interactable = false;
 
 
-		}
+        }
     }
 }

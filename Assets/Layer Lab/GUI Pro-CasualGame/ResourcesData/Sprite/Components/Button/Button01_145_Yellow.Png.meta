@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 2c721438797d449db98d3ec96cb3f327
+guid: 4820c52ebf5294ab6864f5d6120348c2
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button01_145_Yellow.Png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

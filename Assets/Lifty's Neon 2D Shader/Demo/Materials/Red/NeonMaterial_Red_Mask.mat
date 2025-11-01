@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 10916, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: 2ab1764f94f7ff845910cbf946ed33dc, type: 3}
+        m_Texture: {fileID: 10916, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Pattern:
@@ -50,10 +50,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 1
+    - _ColorMask: 15
     - _Density: 36.95
     - _PixelSize: 0.0014
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Strength: 100
+    - _UIMaskSoftnessX: 1
+    - _UIMaskSoftnessY: 1
     m_Colors:
+    - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _NeonColor: {r: 1, g: 0.50243765, b: 0.4666667, a: 1}
     - _Space_Color: {r: 0.25714976, g: 0.19384116, b: 0.41509426, a: 1}
     - _Star_Color: {r: 1, g: 0.8752722, b: 0.41037738, a: 1}

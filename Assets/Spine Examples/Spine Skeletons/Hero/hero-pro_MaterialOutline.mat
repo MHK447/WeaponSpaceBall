@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _USE8NEIGHBOURHOOD_ON
+  - _USE_SCREENSPACE_OUTLINE_WIDTH
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -31,20 +32,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Cutoff: 0
-    - _FillPhase: 1
+    - _FillPhase: 0
     - _OutlineMipLevel: 0
     - _OutlineOpaqueAlpha: 1
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
-    - _OutlineWidth: 8
+    - _OutlineWidth: 5.8
     - _StencilComp: 8
     - _StencilRef: 1
     - _StraightAlphaInput: 0
     - _ThresholdEnd: 0.25
     - _Use8Neighbourhood: 1
-    - _UseScreenSpaceOutlineWidth: 0
+    - _UseScreenSpaceOutlineWidth: 1
     m_Colors:
     - _FillColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 1, b: 0.97254896, a: 1}
+    - _OutlineColor: {r: 0.030872345, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

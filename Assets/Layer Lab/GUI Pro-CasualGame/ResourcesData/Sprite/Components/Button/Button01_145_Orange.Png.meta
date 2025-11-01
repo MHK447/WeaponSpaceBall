@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: ef55b98eb30aa4ffd80c70f98950f29e
+guid: fa981f475687044e3975a1ead52d1d4a
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button01_145_Orange.Png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

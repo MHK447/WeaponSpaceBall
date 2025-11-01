@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCam: {fileID: 861045027}
-  StageMap: {fileID: 0}
 --- !u!1 &154269671
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,12 +472,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 861045022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 204108e3c69c74e19b3d26fc33cd6e57, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d9b0c979f4b74b26b2108caeb8e4416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cam: {fileID: 861045025}
-  Offset: {x: 0, y: 5.5, z: 9.1}
-  DirectionLightTr: {fileID: 154269673}
+  maxDistanceForTap: 40
+  maxDurationForTap: 0.4
+  useMouse: 1
+  mouseScrollSpeed: 2
+  controlCamera: 1
+  cam: {fileID: 861045025}
+  ignoreUI: 0
+  useBounds: 0
+  boundMinX: -150
+  boundMaxX: 150
+  boundMinY: -150
+  boundMaxY: 150
+  focusSize: 15
+  focusMoveDuration: 2
+  zoomOutSizeDefault: 20
+  smoothSpeed: 4
+  maxZoomOutSize: 14.5
+  zoomOutSize: 0
 --- !u!1 &1008968887
 GameObject:
   m_ObjectHideFlags: 0

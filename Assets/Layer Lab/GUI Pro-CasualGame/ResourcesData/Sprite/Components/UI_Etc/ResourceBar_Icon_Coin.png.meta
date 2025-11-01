@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 125d5f81e8dea484b8d47d4114753e6d
+guid: 1a8c2b9d52aaa42db802b8ee8689eca9
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/UI_Etc/ResourceBar_Icon_Coin.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

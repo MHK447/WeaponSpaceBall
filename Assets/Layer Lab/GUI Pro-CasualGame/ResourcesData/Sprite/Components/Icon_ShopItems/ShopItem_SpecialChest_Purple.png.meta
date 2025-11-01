@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 3723581c246dd40708d061876fc873a9
+guid: ea7571dd344544ffda8d899d39ab5b65
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Icon_ShopItems/ShopItem_SpecialChest_Purple.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -281,14 +281,14 @@ public class ProjectUtility
         {
             case Config.RewardType.Currency:
 
-                var currencyHud = GameRoot.Instance.UISystem.GetUI<HudTotal>();
+                var currencyHud = GameRoot.Instance.UISystem.GetUI<HudCurrencyTop>();
                 if (currencyHud != null && currencyHud.gameObject.activeInHierarchy)
                 {
                     UnityEngine.Vector3 pos = currencyHud.transform.position;
                     switch ((Config.CurrencyID)rewardIndex)
                     {
                         case Config.CurrencyID.Money:
-                            pos = currencyHud.MoneyIconTr.position;
+                            pos = currencyHud.GetMoneyRoot.position;
                             break;
                     }
 
@@ -339,7 +339,7 @@ public class ProjectUtility
             center = startPos;
         }
         if (endPos == default(UnityEngine.Vector3))
-            endPos = GameRoot.Instance.GetRewardEndPos(rewardType, rewardIdx, curui);
+            endPos = GameRoot.Instance.UISystem.GetUI<HudCurrencyTop>().GetRewardEndPos(rewardType, rewardIdx);
 
 
 

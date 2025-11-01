@@ -7,7 +7,7 @@ using BanpoFri;
 public interface IInGameMode
 {
     void Load();
-    void UnLoad();
+    void UnLoad(bool nextStage = false);
     void SetCameraBoundMinY(float value);
 }
 
@@ -29,7 +29,7 @@ public abstract class InGameMode : MonoBehaviour, IInGameMode
         if (GameRoot.IsInit())
         {
             GameRoot.Instance.InGameSystem.RegisteInGame(this);
-          
+
             Load();
         }
         else
@@ -46,16 +46,19 @@ public abstract class InGameMode : MonoBehaviour, IInGameMode
     {
         LoadUI();
     }
-    public virtual void UnLoad()
+
+    
+    public virtual void UnLoad(bool nextStage = false)
     {
-        UnLoadUI();
+        UnLoadUI(nextStage);
+    }
+
+    protected virtual void UnLoadUI(bool nextStage = false)
+    {
+        GameRoot.Instance.UISystem.UnLoadUIAll(nextStage);
     }
 
     protected virtual void LoadUI() { }
-    protected virtual void UnLoadUI()
-    {
-        //GameRoot.Instance.UISystem.UnLoadUIAll();
-    }
 
     public virtual void SetCameraBoundMinY(float value)
     {

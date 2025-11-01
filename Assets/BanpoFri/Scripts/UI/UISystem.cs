@@ -9,7 +9,7 @@ namespace BanpoFri
     {
         void RefreshText();
     }
-    
+
     [Serializable]
     public class UISystem
     {
@@ -231,6 +231,40 @@ namespace BanpoFri
             if (RefreshComponentList.Contains(refresher))
                 RefreshComponentList.Remove(refresher);
         }
+
+
+        public void PreLoadUI(Type type, Action<UIBase> OnLoad = null)
+        {
+            var attrs = Attribute.GetCustomAttributes(type);
+            foreach (var attr in attrs)
+            {
+                if (attr is UIPathAttribute)
+                {
+                    var uiPath = (UIPathAttribute)attr;
+
+                    if (cachedUIs.ContainsKey(type)) continue;
+
+                    cachedUIs.Add(type, null);
+                    Addressables.InstantiateAsync(uiPath.Path).Completed += (obj) =>
+                    {
+                        var inst = obj.Result;
+                        if (uiPath.Hud)
+                            inst.transform.SetParent(HUDUIRootT, false);
+                        else if (uiPath.World)
+                            inst.transform.SetParent(WorldCanvas.transform, false);
+                        else
+                            inst.transform.SetParent(UIRootT, false);
+
+                        var uiBase = inst.GetComponent(type) as UIBase;
+                        cachedUIs[type] = uiBase;
+                        inst.SetActive(false);
+                        OnLoad?.Invoke(uiBase);
+                    };
+                    break;
+                }
+            }
+        }
+
 
         public void PreLoadUI(Type type)
         {
@@ -498,13 +532,16 @@ namespace BanpoFri
                 ScreenTopOn(false, UIBase.HUDType.All);
             }
         }
-
-        public void UnLoadUIAll()
+        public void UnLoadUIAll(bool keepWorldMap = false)
         {
             foreach (var ui in cachedUIs)
             {
                 if (ui.Value != null)
-                    Addressables.ReleaseInstance(ui.Value.gameObject);
+                {
+                    if (!keepWorldMap || !ui.Value.gameObject.name.Contains("PageStageWorldMap"))
+                        if (!Addressables.ReleaseInstance(ui.Value.gameObject))
+                            GameObject.Destroy(ui.Value.gameObject);
+                }
                 //GameObject.Destroy(ui.Value.gameObject);
             }
             cachedUIs.Clear();
@@ -512,13 +549,16 @@ namespace BanpoFri
             {
                 foreach (Transform child in trans.Value.transform)
                 {
-                    Addressables.ReleaseInstance(child.gameObject);
+                    if (!Addressables.ReleaseInstance(child.gameObject))
+                        GameObject.Destroy(child.gameObject);
                 }
                 GameObject.Destroy(trans.Value);
             }
             cachedIngameUITrans.Clear();
             openPopupList.Clear();
             screenActionList.Clear();
+
+            SoundPlayer.Instance.SetBGMVolume();
         }
 
         public List<GameObject> GetOpendedUI()

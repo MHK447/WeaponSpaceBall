@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 3fb26300bd09b4f41bb9f46838452647
+guid: 64fd738446f7d44efac32b64ec34e7eb
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Frame/StageFrame_Single_Bg_n.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

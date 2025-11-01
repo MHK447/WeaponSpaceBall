@@ -27,6 +27,9 @@ public class GameRoot : Singleton<GameRoot>
 	[HideInInspector]
 	public LoadingBasic Loading;
 
+	[HideInInspector]
+	public HudCurrencyTop CurrencyTop;
+
 
 	public InAppPurchaseManager InAppPurchaseManager;
 
@@ -50,6 +53,9 @@ public class GameRoot : Singleton<GameRoot>
 	public ShopSystem ShopSystem { get; private set; } = new ShopSystem();
 
 	public UpgradeSystem UpgradeSystem { get; private set; } = new UpgradeSystem();
+	public SceneSystem SceneSystem { get; private set; } = new SceneSystem();
+
+	public ActionQueueSystem ActionQueueSystem { get; private set; } = new ActionQueueSystem();
 
 
 	public UnityMainThreadDispatcher MainThreadDispatcher;
@@ -60,7 +66,7 @@ public class GameRoot : Singleton<GameRoot>
 	private static bool InitTry = false;
 	public static bool LoadComplete { get; private set; } = false;
 	private float deltaTime = 0f;
-	public InGameType CurInGameType { get; private set; } = InGameType.Main;
+	public GameType CurInGameType { get; private set; } = GameType.Main;
 	private Queue<System.Action> TouchStartActions = new Queue<System.Action>();
 	public Queue<System.Action> TitleCloseActions = new Queue<System.Action>();
 
@@ -195,6 +201,18 @@ public class GameRoot : Singleton<GameRoot>
 		Destroy(obj);
 	}
 
+	public void InitCurrencyTop(System.Action successcallback = null)
+	{
+		if (CurrencyTop == null)
+		{
+			UISystem.OpenUI<HudCurrencyTop>(x =>
+			{
+				CurrencyTop = x;
+				successcallback?.Invoke();
+			});
+		}
+	}
+
 	IEnumerator Start()
 	{
 		if (instance == null)
@@ -253,7 +271,6 @@ public class GameRoot : Singleton<GameRoot>
 		InitSystem();
 
 		UpgradeSystem.Create();
-		InGameSystem.Create();
 		GameNotification.Create();
 		ShopSystem.Create();
 		GameRoot.instance.InAppPurchaseManager.InitializePurchasing();
@@ -272,7 +289,7 @@ public class GameRoot : Singleton<GameRoot>
 
 	public void BgmOn()
 	{
-		if (GameRoot.instance.CurInGameType == InGameType.Event)
+		if (GameRoot.instance.CurInGameType == GameType.Event)
 		{
 			SoundPlayer.Instance.PlayBGM("bgm_pirate", true);
 			SoundPlayer.Instance.BgmSwitch(UserData.Bgm);
@@ -284,21 +301,13 @@ public class GameRoot : Singleton<GameRoot>
 		}
 	}
 
-	private void OnATTResponseReceived(bool isAuthorized)
-	{
-		Debug.Log($"ATT 권한 응답 받음: {isAuthorized}");
-
-
-
-		// 필요시 다른 추적 관련 SDK들에도 상태 전달
-	}
 
 	void InitRequestAtlas()
 	{
 		AtlasManager.Instance.ReLoad(false);
 	}
 
-	public void ChangeIngameType(InGameType type, bool changeData = false)
+	public void ChangeIngameType(GameType type, bool changeData = false)
 	{
 
 		CurInGameType = type;
@@ -308,12 +317,12 @@ public class GameRoot : Singleton<GameRoot>
 			DataState dataState = DataState.None;
 			switch (CurInGameType)
 			{
-				case InGameType.Main:
+				case GameType.Main:
 					{
 						dataState = DataState.Main;
 					}
 					break;
-				case InGameType.Event:
+				case GameType.Event:
 					{
 						dataState = DataState.Event;
 					}
@@ -408,18 +417,10 @@ public class GameRoot : Singleton<GameRoot>
 	}
 
 
-
-
 	public void WaitFrameAndCallback(int frame, System.Action callback)
 	{
 		StartCoroutine(waitFrameAndCallback(frame, callback));
 	}
-
-	public Vector3 GetRewardEndPos(int rewardType, int rewardIdx, UIBase ui)
-	{
-		return ui.GetCurrencyImgTr(rewardType, rewardIdx).position;
-	}
-
 
 
 	private void OnApplicationPause(bool pause)

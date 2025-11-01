@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 01a3ddce43e9f44c19bde83f0faacec7
+guid: 63add0398bd27434d9c90825f8c6fa5f
 AssetOrigin:
   serializedVersion: 1
   productId: 176695
   packageName: GUI Pro - Casual Game
-  packageVersion: 4.1.0
+  packageVersion: 4.1.1
   assetPath: Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/UI_Etc/ResourceBar_Icon_Gem_Purple.png
-  uploadId: 749964
+  uploadId: 754818
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
